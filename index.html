@@ -1,0 +1,379 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Practice quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFFFF; --bg:#FBFBFD; --surface:#F5F5F7; --sunk:#EFEFF3; --fill:#F2F2F5;
+  --text:#1D1D1F; --text-2:#5A5A5F; --text-3:#86868B; --line:#D8D8DE; --sep:#E6E6EB;
+  --blue:#0071E3; --blue-bg:#EDF4FD; --green:#1D7F3C; --green-bg:#EAF6EE;
+  --red:#C8102E; --red-bg:#FCEDEF; --amber:#9A5B00; --amber-bg:#FDF3E6;
+  --fs-1:32px; --fs-2:25px; --fs-3:20px; --fs-4:18px; --fs-5:16px; --fs-6:14px;
+  --fs-7:12.5px; --fs-8:11px; --fs-code:13.5px;
+  --ui:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --display:"Newsreader",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --r:14px; --r-sm:9px; --ease:cubic-bezier(.32,.72,0,1);
+  --shadow:0 1px 3px rgba(0,0,0,.05), 0 8px 26px rgba(0,0,0,.05);
+}
+:root[data-theme="dark"], :root:not([data-theme="light"]) .dark-probe{}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#1C1C1E; --bg:#000; --surface:#161618; --sunk:#232325; --fill:#252527;
+    --text:#F5F5F7; --text-2:#A1A1A6; --text-3:#7C7C81; --line:#38383A; --sep:#2C2C2E;
+    --blue:#2997FF; --blue-bg:#0D2136; --green:#30D158; --green-bg:#0E2A18;
+    --red:#FF453A; --red-bg:#2E1113; --amber:#FF9F0A; --amber-bg:#2C1E06;
+    --shadow:0 4px 20px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1C1C1E; --bg:#000; --surface:#161618; --sunk:#232325; --fill:#252527;
+  --text:#F5F5F7; --text-2:#A1A1A6; --text-3:#7C7C81; --line:#38383A; --sep:#2C2C2E;
+  --blue:#2997FF; --blue-bg:#0D2136; --green:#30D158; --green-bg:#0E2A18;
+  --red:#FF453A; --red-bg:#2E1113; --amber:#FF9F0A; --amber-bg:#2C1E06;
+  --shadow:0 4px 20px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;-webkit-text-size-adjust:100%}
+body{background:var(--bg); color:var(--text); font-family:var(--ui); font-size:var(--fs-5);
+  line-height:1.55; -webkit-font-smoothing:antialiased}
+h1{margin:0; font-family:var(--display); font-size:var(--fs-1); font-weight:600; letter-spacing:-.02em}
+p{margin:0}
+button{font-family:inherit; font-size:inherit}
+.app{max-width:880px; margin:0 auto; padding:30px 22px 70px}
+.top{display:flex; align-items:baseline; justify-content:space-between; gap:14px;
+  flex-wrap:wrap; margin-bottom:6px}
+.lede{color:var(--text-2); font-size:var(--fs-6); max-width:62ch; margin-bottom:18px}
+.ghost{appearance:none; border:1px solid var(--line); background:transparent; color:var(--text-2);
+  border-radius:980px; padding:6px 14px; font-size:var(--fs-7); cursor:pointer}
+.ghost:hover{background:var(--fill); color:var(--text)}
+.setup{background:var(--paper); border:1px solid var(--sep); border-radius:var(--r);
+  margin-bottom:16px; overflow:hidden}
+.setup > summary{cursor:pointer; padding:12px 18px; font-size:var(--fs-6); font-weight:600;
+  list-style:none; display:flex; justify-content:space-between; gap:10px}
+.setup > summary::-webkit-details-marker{display:none}
+.setup > summary span{color:var(--text-3); font-weight:400; font-size:var(--fs-7)}
+.setup[open] > summary span{visibility:hidden}
+.setup pre.code{margin:0; border-radius:0; border-top:1px solid var(--sep)}
+.hint{font-size:var(--fs-7); color:var(--text-3); padding:11px 18px; line-height:1.6}
+.hint code{font-family:var(--mono); background:var(--sunk); padding:1px 5px; border-radius:4px}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:16px}
+.chip{appearance:none; border:1px solid var(--line); background:transparent; color:var(--text-2);
+  border-radius:980px; padding:6px 13px; font-size:var(--fs-7); cursor:pointer}
+.chip.on{background:var(--text); border-color:var(--text); color:var(--bg); font-weight:600}
+.bar{display:flex; align-items:center; gap:14px; margin-bottom:16px}
+.track{flex:1; height:4px; background:var(--sep); border-radius:3px; overflow:hidden}
+.track i{display:block; height:100%; background:var(--green); width:0; transition:width .4s var(--ease)}
+.count{font-size:var(--fs-7); color:var(--text-3); font-family:var(--mono); white-space:nowrap}
+.card{background:var(--paper); border:1px solid var(--sep); border-radius:var(--r);
+  box-shadow:var(--shadow); padding:20px 22px 18px}
+.tag{font-size:var(--fs-8); font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--blue); background:var(--blue-bg); padding:3px 9px; border-radius:6px}
+.stem{font-family:var(--display); font-size:var(--fs-3); font-weight:600; line-height:1.35;
+  margin:12px 0 4px}
+pre.code{margin:12px 0 4px; background:var(--sunk); border-radius:var(--r-sm); padding:13px 15px;
+  font-family:var(--mono); font-size:var(--fs-code); line-height:1.7; overflow-x:auto;
+  white-space:pre}
+.tablewrap{margin:12px 0 2px; border:1px solid var(--sep); border-radius:var(--r-sm);
+  background:var(--paper); overflow:hidden}
+.tablescroll{overflow-x:auto}
+.tabkey{font-size:var(--fs-8); color:var(--text-3); padding:7px 12px;
+  border-top:1px solid var(--sep); background:var(--surface)}
+.tabkey b{color:var(--red)} .tabkey i{color:var(--amber); font-style:normal; font-weight:700}
+.tabcap{font-size:var(--fs-8); letter-spacing:.05em; text-transform:uppercase;
+  color:var(--text-3); padding:8px 12px; background:var(--surface);
+  border-bottom:1px solid var(--sep)}
+table.grid{width:100%; border-collapse:collapse; font-family:var(--mono);
+  font-size:var(--fs-7); white-space:nowrap}
+table.grid th{text-align:left; font-weight:700; color:var(--text-2); padding:7px 12px;
+  border-bottom:1px solid var(--line); background:var(--paper)}
+table.grid td{padding:6px 12px; border-bottom:1px solid var(--sep); color:var(--text)}
+table.grid tbody tr:last-child td{border-bottom:0}
+table.grid td.num{font-variant-numeric:tabular-nums}
+table.grid td.blank{color:var(--red); font-weight:700}
+table.grid td.ws{color:var(--amber); background:var(--amber-bg)}
+.opts{margin-top:14px}
+.opt{display:flex; gap:11px; align-items:flex-start; width:100%; text-align:left;
+  background:var(--paper); border:1px solid var(--sep); border-radius:var(--r-sm);
+  padding:11px 13px; margin-bottom:8px; cursor:pointer; color:var(--text)}
+.opt:hover:not(:disabled){border-color:var(--line); background:var(--fill)}
+.opt:disabled{cursor:default}
+.opt .ltr{flex:none; width:21px; height:21px; border-radius:50%; background:var(--fill);
+  color:var(--text-2); font-size:var(--fs-8); font-weight:700; display:flex;
+  align-items:center; justify-content:center; margin-top:1px}
+.opt.right{background:var(--green-bg); border-color:var(--green)}
+.opt.right .ltr{background:var(--green); color:#fff}
+.opt.wrong{background:var(--red-bg); border-color:var(--red)}
+.opt.wrong .ltr{background:var(--red); color:#fff}
+.opt span.t{font-family:var(--mono); font-size:var(--fs-code); line-height:1.6;
+  word-break:break-word}
+.opt.plain span.t{font-family:var(--ui); font-size:var(--fs-6)}
+.fillrow{display:flex; gap:9px; margin-top:14px; flex-wrap:wrap}
+.fillrow input{flex:1; min-width:180px; padding:11px 13px; border:1px solid var(--line);
+  border-radius:var(--r-sm); background:var(--sunk); color:var(--text);
+  font-family:var(--mono); font-size:var(--fs-code); outline:none}
+.fillrow input:focus{border-color:var(--blue); background:var(--paper)}
+.fillrow input.right{border-color:var(--green); background:var(--green-bg)}
+.fillrow input.wrong{border-color:var(--red); background:var(--red-bg)}
+.fillrow input:disabled{opacity:1}
+.kindtag{font-size:var(--fs-8); color:var(--text-3); letter-spacing:.05em;
+  text-transform:uppercase; margin-left:8px}
+.why{margin-top:12px; background:var(--fill); border-radius:var(--r-sm); padding:13px 15px;
+  font-size:var(--fs-6); color:var(--text-2); line-height:1.65}
+.why b{color:var(--text)}
+.why code{font-family:var(--mono); font-size:var(--fs-code); background:var(--sunk);
+  padding:1px 5px; border-radius:4px}
+.nav{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:18px}
+.btn{appearance:none; border:0; background:var(--fill); color:var(--text); border-radius:var(--r-sm);
+  padding:9px 16px; font-size:var(--fs-6); font-weight:600; cursor:pointer}
+.btn.go{background:var(--blue); color:#fff}
+.btn:disabled{opacity:.4; cursor:default}
+.done{text-align:center; padding:40px 20px}
+.done .score{font-family:var(--display); font-size:52px; font-weight:600; line-height:1}
+.done .sub{color:var(--text-2); font-size:var(--fs-6); margin-top:8px}
+.bytopic{margin:22px auto 0; max-width:420px; text-align:left}
+.bytopic div{display:flex; justify-content:space-between; gap:12px; padding:7px 0;
+  border-bottom:1px solid var(--sep); font-size:var(--fs-6)}
+.bytopic b{font-family:var(--mono); font-weight:500}
+@media (prefers-reduced-motion: reduce){ *{transition-duration:.01ms!important} }
+</style>
+</head>
+<body>
+<script id="qdata" type="application/json">{"setup": "import pandas as pd\nimport numpy as np\n\nrentals = pd.DataFrame({\n    \"Rental ID\": [107, 108, 109, 110, 111, 112, 113, 113],\n    \"Customer\":  [\"Dana Whitfield\", \"Marcus Reed\", \"Priya Shah\", None,\n                  \"Nina Petrov\", \"Cal Jorgensen\", \"Theo Nakamura\", \"Theo Nakamura\"],\n    \"Bike Type\": [\"Road\", \"hybrid\", \"Road\", \"E-Bike\", \"ROAD\", \"Hybrid\", \"Road\", \"Road\"],\n    \"Station\":   [\"North\", \"South\", \"North\", \"East\", \"North \", \"South\", \"East\", \"East\"],\n    \"hours\":     [2.5, 1.0, 3.5, 1.5, 2.0, np.nan, 2.0, 2.0],\n    \"Amount\":    [\"$30.00\", \"$10.00\", \"$42.00\", \"$25.50\", \"$24.00\",\n                  \"pending\", \"$24.00\", \"$24.00\"],\n})\n\nstations = pd.DataFrame({\n    \"Station\": [\"North\", \"South\", \"East\"],\n    \"Area\":    [\"Riverside Park\", \"Old Mill\", \"Campus\"],\n    \"Docks\":   [18, 12, 10],\n})\n", "tables": {"rentals": {"cols": ["Rental ID", "Customer", "Bike Type", "Station", "hours", "Amount"], "rows": [["107", "Dana Whitfield", "Road", "North", "2.5", "$30.00"], ["108", "Marcus Reed", "hybrid", "South", "1", "$10.00"], ["109", "Priya Shah", "Road", "North", "3.5", "$42.00"], ["110", "", "E-Bike", "East", "1.5", "$25.50"], ["111", "Nina Petrov", "ROAD", "North␣", "2", "$24.00"], ["112", "Cal Jorgensen", "Hybrid", "South", "", "pending"], ["113", "Theo Nakamura", "Road", "East", "2", "$24.00"], ["113", "Theo Nakamura", "Road", "East", "2", "$24.00"]]}, "stations": {"cols": ["Station", "Area", "Docks"], "rows": [["North", "Riverside Park", "18"], ["South", "Old Mill", "12"], ["East", "Campus", "10"]]}}, "questions": [{"n": 1, "topic": "Look before you touch", "kind": "concept", "stem": "The workbook has two sheets, `Rentals` and `Stations`. What does `pd.read_excel(\"riverbend_rentals.xlsx\")` give you?", "code": "", "options": ["both sheets, stacked", "the first sheet only", "a dictionary of both sheets", "an error, because the sheet was not named"], "correct": 1, "note": "It reads the **first** sheet and says nothing about the others. Name the one you want: `sheet_name=\"Rentals\"`.", "show": "none"}, {"n": 2, "topic": "Look before you touch", "kind": "concept", "stem": "Why write `rentals = raw.copy()` instead of cleaning `raw` directly?", "code": "", "options": ["copy() makes the code run faster", "so the original stays untouched and the cleaning can be re-run", "because pandas cannot clean a file it has just read", "to use less memory"], "correct": 1, "note": "The file you were given is the evidence. Keep it, clean the copy, and the whole job can be re-run from the top when somebody asks where a number came from.", "show": "none"}, {"n": 3, "topic": "Look before you touch", "kind": "code", "stem": "What does this return?", "code": "rentals.shape", "options": ["(8, 6)", "(6, 8)", "(7, 6)", "8"], "correct": 0, "note": "Eight rows and six columns, as a tuple. Eight rows for seven rentals is the first thing to notice — rental 113 is in there twice.", "show": "rentals"}, {"n": 4, "topic": "Look before you touch", "kind": "code", "stem": "What does this return?", "code": "rentals[\"Bike Type\"].value_counts().shape[0]", "options": ["3", "4", "5", "8"], "correct": 2, "note": "Five labels — `Road`, `hybrid`, `E-Bike`, `ROAD`, `Hybrid` — for three kinds of bike. `value_counts()` is how you see that before it splits a group-by in two.", "show": "rentals"}, {"n": 5, "topic": "Look before you touch", "kind": "code", "stem": "What does this return?", "code": "rentals[\"hours\"].count()", "options": ["6", "7", "8", "9"], "correct": 1, "note": "`count()` counts filled values only — one `hours` is blank. Two columns of the same table can report different counts, which is why `info()` shows them side by side.", "show": "rentals"}, {"n": 6, "topic": "Look before you touch", "kind": "code", "stem": "What does this return?", "code": "rentals[\"Amount\"].sum()", "options": ["179.5", "'$30.00$10.00$42.00$25.50$24.00pending$24.00$24.00'", "TypeError", "203.5"], "correct": 1, "note": "The dollar signs make the column text, so `sum()` glues the strings end to end. No error, no warning, and an answer that is nonsense — which is why you check the types first.", "show": "rentals"}, {"n": 7, "topic": "Look before you touch", "kind": "fill", "stem": "Write exactly what this prints.", "code": "print(rentals.shape[0])", "options": [], "correct": -1, "answer": "8", "accept": ["8", "8.0", "8.00"], "note": "Eight rows, for seven rentals. `shape` is (rows, columns), so `shape[0]` is the row count.", "show": "rentals"}, {"n": 8, "topic": "Look before you touch", "kind": "fill", "stem": "One word. Which command shows the column names, their types and how many values are filled?", "code": "arg = \"info\"\narg", "options": [], "correct": -1, "answer": "info", "accept": ["info"], "note": "`rentals.info()`. `shape` gives the size alone and `dtypes` the types alone; `info()` puts them together with the gaps.", "show": "none"}, {"n": 9, "topic": "Duplicate rows", "kind": "code", "stem": "What does this return?", "code": "rentals.duplicated().sum()", "options": ["0", "1", "2", "8"], "correct": 1, "note": "One. `duplicated()` marks every repeat **after the first**, so a row appearing twice counts once — it is a count of rows to remove, not of rows involved.", "show": "rentals"}, {"n": 10, "topic": "Duplicate rows", "kind": "code", "stem": "What does this return?", "code": "len(rentals[rentals[\"Rental ID\"].duplicated(keep=False)])", "options": ["1", "2", "7", "8"], "correct": 1, "note": "`keep=False` marks **both** copies, which is how you look at them side by side and decide whether it is one rental recorded twice or two rentals sharing an id.", "show": "rentals"}, {"n": 11, "topic": "Duplicate rows", "kind": "code", "stem": "What does this return?", "code": "len(rentals.drop_duplicates())", "options": ["6", "7", "8", "9"], "correct": 1, "note": "Seven rentals left. Print the count before and after, every time — a drop that removes more than you expected means the rows were not identical for the reason you assumed.", "show": "rentals"}, {"n": 12, "topic": "Duplicate rows", "kind": "concept", "stem": "The two copies of rental 113 disagree on `Amount`. What does that change?", "code": "", "options": ["nothing, drop one anyway", "they may be two real rentals sharing an id — dropping one would throw away money", "`drop_duplicates()` would raise an error", "the id column must be renamed"], "correct": 1, "note": "Identical rows are an export that ran twice. Rows that share an id but differ somewhere are a different problem, and `drop_duplicates()` cannot tell you which you have.", "show": "none"}, {"n": 13, "topic": "Duplicate rows", "kind": "fill", "stem": "Write exactly what this prints.", "code": "print(len(rentals) - len(rentals.drop_duplicates()))", "options": [], "correct": -1, "answer": "1", "accept": ["1", "1.0", "1.00"], "note": "One row removed. The difference between the two counts is the only honest way to report a dedupe.", "show": "rentals"}, {"n": 14, "topic": "Duplicate rows", "kind": "fill", "stem": "One word. Which argument tells `drop_duplicates` to compare one column instead of the whole row?", "code": "arg = \"subset\"\narg", "options": [], "correct": -1, "answer": "subset", "accept": ["subset"], "note": "`drop_duplicates(subset=\"Rental ID\")`. Use it when the repeat is an id; leave it off when you mean *every column matches*.", "show": "none"}, {"n": 15, "topic": "Column names", "kind": "concept", "stem": "Which line turns `Rental ID`, `Bike Type` and `hours` into `rental_id`, `bike_type`, `hours`?", "code": "", "options": ["rentals.columns.str.strip().str.lower().str.replace(\" \", \"_\")", "rentals.columns.str.lower()", "rentals.columns.str.replace(\" \", \"_\")", "rentals.rename(columns=str.lower)"], "correct": 0, "note": "Three small jobs: drop the padding, settle the case, close the gaps. The middle two each do one of them and leave the rest.", "show": "none"}, {"n": 16, "topic": "Column names", "kind": "code", "stem": "What does this return?", "code": "rentals.columns = rentals.columns.str.strip().str.lower().str.replace(\" \", \"_\")\nlist(rentals.columns)[:3]", "options": ["['rental_id', 'customer', 'bike_type']", "['Rental ID', 'Customer', 'Bike Type']", "['rental id', 'customer', 'bike type']", "['rental_ID', 'Customer', 'bike_Type']"], "correct": 0, "note": "Lower case and underscores, so every column is reachable as `rentals[\"bike_type\"]` without guessing where the capitals and spaces were.", "show": "rentals"}, {"n": 17, "topic": "Column names", "kind": "concept", "stem": "After renaming the columns to lower case, what does `rentals[\"Bike Type\"]` do?", "code": "", "options": ["returns the column anyway", "raises KeyError", "returns an empty column", "renames it back"], "correct": 1, "note": "`KeyError`. Column names are exact strings — that error is pandas telling you the name you typed is not the name in the table.", "show": "none"}, {"n": 18, "topic": "Text that should be tidy", "kind": "concept", "stem": "`value_counts()` shows five labels for three kinds of bike. Which line fixes it?", "code": "", "options": ["rentals[\"Bike Type\"].str.title()", "rentals[\"Bike Type\"].str.strip()", "rentals[\"Bike Type\"].str.strip().str.title()", "rentals[\"Bike Type\"].drop_duplicates()"], "correct": 2, "note": "Two problems, two methods: `strip` removes the padding, `title` settles the case. Either one alone leaves the other behind, and `drop_duplicates` deletes rows rather than fixing labels.", "show": "rentals"}, {"n": 19, "topic": "Text that should be tidy", "kind": "code", "stem": "What does this return?", "code": "rentals[\"Station\"].value_counts().shape[0]", "options": ["3", "4", "5", "8"], "correct": 1, "note": "Four — because one station is written `\"North \"` with a space on the end. A trailing space is invisible on screen and a different string to pandas.", "show": "rentals"}, {"n": 20, "topic": "Text that should be tidy", "kind": "code", "stem": "What does this return?", "code": "rentals[\"Station\"].str.strip().value_counts()[\"North\"]", "options": ["1", "2", "3", "4"], "correct": 2, "note": "Three once the space is gone. Before stripping, `\"North \"` sat in its own group of one and the real North total never appeared.", "show": "rentals"}, {"n": 21, "topic": "Text that should be tidy", "kind": "code", "stem": "What does this return?", "code": "rentals[\"Bike Type\"].str.strip().str.title().value_counts()[\"Road\"]", "options": ["3", "4", "5", "8"], "correct": 2, "note": "Five rows, once `ROAD` and the duplicate are counted as `Road` too. Tidy the labels before any group-by, or each spelling gets its own line in the answer.", "show": "rentals"}, {"n": 22, "topic": "Text that should be tidy", "kind": "fill", "stem": "One word. Which string method removes the spaces at each end of a value?", "code": "arg = \"strip\"\narg", "options": [], "correct": -1, "answer": "strip", "accept": ["strip"], "note": "`col.str.strip()`. Pair it with `.str.title()` — one without the other leaves half the problem in place.", "show": "none"}, {"n": 23, "topic": "Text that should be tidy", "kind": "fill", "stem": "Write exactly what this prints.", "code": "print(rentals[\"Bike Type\"].str.strip().str.title().value_counts().shape[0])", "options": [], "correct": -1, "answer": "3", "accept": ["3", "3.0", "3.00"], "note": "Three kinds of bike, which is what was true all along. The file just spelled them five ways.", "show": "rentals"}, {"n": 24, "topic": "Numbers stored as text", "kind": "code", "stem": "What does this return?", "code": "rentals[\"Amount\"].isna().sum()", "options": ["0", "1", "2", "8"], "correct": 0, "note": "Zero — and the column still cannot be added up. `\"pending\"` is a filled cell as far as pandas is concerned. `isna()` finds true blanks only, so look at the values as well.", "show": "rentals"}, {"n": 25, "topic": "Numbers stored as text", "kind": "code", "stem": "What happens here?", "code": "rentals[\"Amount\"].str.replace(\"$\", \"\", regex=False).astype(float)", "options": ["a column of floats", "ValueError", "a column of NaN", "TypeError"], "correct": 1, "note": "`astype` is all or nothing: one `\"pending\"` and the whole conversion raises. That error is the useful kind — it tells you something in the column is not a number.", "show": "rentals"}, {"n": 26, "topic": "Numbers stored as text", "kind": "code", "stem": "What does this return?", "code": "text = rentals[\"Amount\"].str.replace(\"$\", \"\", regex=False)\npd.to_numeric(text, errors=\"coerce\").isna().sum()", "options": ["0", "1", "2", "8"], "correct": 1, "note": "One blank, where `\"pending\"` was. `errors=\"coerce\"` turns what it cannot read into a blank instead of raising — so count what it created, every time.", "show": "rentals"}, {"n": 27, "topic": "Numbers stored as text", "kind": "code", "stem": "What does this return?", "code": "text = rentals[\"Amount\"].str.replace(\"$\", \"\", regex=False)\npd.to_numeric(text, errors=\"coerce\").sum()", "options": ["179.5", "155.5", "203.5", "nan"], "correct": 0, "note": "The seven readable amounts. `sum()` skips the blank rather than refusing — report the count beside any total built this way, or nobody knows a row is missing.", "show": "rentals"}, {"n": 28, "topic": "Numbers stored as text", "kind": "fill", "stem": "One word. Which `to_numeric` setting turns what it cannot read into a blank instead of raising?", "code": "arg = \"coerce\"\narg", "options": [], "correct": -1, "answer": "coerce", "accept": ["coerce"], "note": "`errors=\"coerce\"`. Then count the blanks it made — a coerce that quietly swallows half a column is worse than an error.", "show": "none"}, {"n": 29, "topic": "Numbers stored as text", "kind": "fill", "stem": "Write exactly what this prints.", "code": "text = rentals[\"Amount\"].str.replace(\"$\", \"\", regex=False)\namount = pd.to_numeric(text, errors=\"coerce\")\nprint(round(amount.mean(), 2))", "options": [], "correct": -1, "answer": "25.64", "accept": ["25.64"], "note": "The mean of the seven amounts it could read. The blank is skipped, not treated as zero — which is right here, and would be wrong if `\"pending\"` really meant nothing was paid.", "show": "rentals"}, {"n": 30, "topic": "Missing values", "kind": "code", "stem": "What does this return?", "code": "rentals.isna().sum().sum()", "options": ["1", "2", "3", "8"], "correct": 1, "note": "Two true blanks: one `Customer` and one `hours`. `\"pending\"` is not among them — it is text, and `isna()` cannot see it.", "show": "rentals"}, {"n": 31, "topic": "Missing values", "kind": "code", "stem": "What does this return?", "code": "print(round(rentals[\"hours\"].mean(), 2), rentals[\"hours\"].median())", "options": ["2.07 2.0", "1.81 2.0", "2.07 2.5", "2.0 2.0"], "correct": 0, "note": "Both skip the blank. They are close here, so either would do — when they are far apart, that gap is the thing worth reporting.", "show": "rentals"}, {"n": 32, "topic": "Missing values", "kind": "concept", "stem": "Why fill a blank `hours` with the median rather than the mean?", "code": "", "options": ["the median is always more accurate", "it is a decision, not a rule — the median is steadier when a few long rentals stretch the mean", "the mean cannot be used on decimals", "pandas does not allow fillna with a mean"], "correct": 1, "note": "There is no correct answer here, only a defensible one. What matters is that you say in a note which you used, because it changes the number.", "show": "none"}, {"n": 33, "topic": "Missing values", "kind": "code", "stem": "What does this return?", "code": "len(rentals.dropna())", "options": ["5", "6", "7", "8"], "correct": 1, "note": "A bare `dropna()` drops a row if **any** column is blank — two rows go for two blanks in different columns. Pass `subset=` when only one column matters.", "show": "rentals"}, {"n": 34, "topic": "Missing values", "kind": "fill", "stem": "Write exactly what this prints.", "code": "print(rentals[\"Customer\"].isna().sum())", "options": [], "correct": -1, "answer": "1", "accept": ["1", "1.0", "1.00"], "note": "One missing name. Harmless for a revenue question, worth a sentence anyway — say what you checked, not only what you fixed.", "show": "rentals"}, {"n": 35, "topic": "Missing values", "kind": "fill", "stem": "Write exactly what this prints.", "code": "print(rentals[\"hours\"].fillna(rentals[\"hours\"].median()).count())", "options": [], "correct": -1, "answer": "8", "accept": ["8", "8.0", "8.00"], "note": "All eight rows have a value now. `fillna` changes the count, so the spread it reports afterwards is no longer the spread of the data you were given.", "show": "rentals"}, {"n": 36, "topic": "The second sheet", "kind": "concept", "stem": "The key is called `Station` in the rentals and `Station` in the lookup, but `station` after you rename the columns. What do you write?", "code": "", "options": ["merge(stations, on=\"station\")", "merge(stations, left_on=\"station\", right_on=\"Station\")", "merge(stations, on=[\"station\", \"Station\"])", "merge(stations, how=\"outer\")"], "correct": 1, "note": "`on=` needs the same name on both sides; `left_on` / `right_on` name them separately. Tidying both sets of column names first usually saves you from needing either.", "show": "none"}, {"n": 37, "topic": "The second sheet", "kind": "concept", "stem": "What does `how=\"left\"` keep?", "code": "", "options": ["only the rows that matched", "every row of the rentals, with blanks where the lookup had nothing", "every row of the lookup", "every row of both tables"], "correct": 1, "note": "The left table is the one you are keeping whole. Unmatched rows survive with blanks in the lookup's columns — which is why you count those blanks immediately afterwards.", "show": "none"}, {"n": 38, "topic": "The second sheet", "kind": "code", "stem": "What does this return?", "code": "merged = rentals.merge(stations, on=\"Station\", how=\"left\")\nlen(merged)", "options": ["3", "7", "8", "11"], "correct": 2, "note": "Eight in, eight out. A one-to-one lookup should never change the row count — if it does, the lookup has a repeated key.", "show": "both"}, {"n": 39, "topic": "The second sheet", "kind": "code", "stem": "What does this return?", "code": "merged = rentals.merge(stations, on=\"Station\", how=\"left\")\nmerged[\"Area\"].isna().sum()", "options": ["0", "1", "2", "8"], "correct": 1, "note": "One row has no area: the station written `\"North \"` matched nothing. No error, no warning — which is exactly why this line follows every join.", "show": "both"}, {"n": 40, "topic": "The second sheet", "kind": "code", "stem": "What does this return?", "code": "tidy = rentals.copy()\ntidy[\"Station\"] = tidy[\"Station\"].str.strip()\ntidy.merge(stations, on=\"Station\", how=\"left\")[\"Area\"].isna().sum()", "options": ["0", "1", "2", "3"], "correct": 0, "note": "Nothing unmatched, once the stray space is gone. Clean the key **before** you join, not after you have wondered where a row went.", "show": "both"}, {"n": 41, "topic": "The second sheet", "kind": "code", "stem": "What does this return?", "code": "tidy = rentals.copy()\ntidy[\"Station\"] = tidy[\"Station\"].str.strip()\nlen(tidy.merge(stations, on=\"Station\", how=\"inner\"))", "options": ["3", "7", "8", "11"], "correct": 2, "note": "Here `inner` and `left` agree, because everything matches. They only differ when something does not — and then `inner` drops those rows without telling you.", "show": "both"}, {"n": 42, "topic": "The second sheet", "kind": "fill", "stem": "One word. Which `how=` setting keeps every row of both tables?", "code": "arg = \"outer\"\narg", "options": [], "correct": -1, "answer": "outer", "accept": ["outer"], "note": "`outer`. Useful for finding what each side is missing; rarely the table you hand over, because it leaves blanks on both sides.", "show": "none"}, {"n": 43, "topic": "The second sheet", "kind": "fill", "stem": "Write exactly what this prints.", "code": "tidy = rentals.copy()\ntidy[\"Station\"] = tidy[\"Station\"].str.strip()\nmerged = tidy.merge(stations, on=\"Station\", how=\"left\")\nprint(len(merged[\"Area\"].unique()))", "options": [], "correct": -1, "answer": "3", "accept": ["3", "3.0", "3.00"], "note": "Three areas, one per station. The lookup's columns come across; the key does not arrive twice.", "show": "both"}, {"n": 44, "topic": "Describing a column", "kind": "code", "stem": "What does this return?", "code": "amount = pd.to_numeric(rentals[\"Amount\"].str.replace(\"$\", \"\", regex=False), errors=\"coerce\")\nprint(round(amount.mean(), 2), amount.median())", "options": ["25.64 24.0", "22.44 24.0", "25.64 25.5", "24.0 24.0"], "correct": 0, "note": "Mean and median within a few cents of each other — no long tail here, so either one describes a typical rental. When they separate, say which you are quoting and why.", "show": "rentals"}, {"n": 45, "topic": "Describing a column", "kind": "code", "stem": "What does this return?", "code": "amount = pd.to_numeric(rentals[\"Amount\"].str.replace(\"$\", \"\", regex=False), errors=\"coerce\")\nround(amount.std(), 2)", "options": ["9.48", "6.57", "8.42", "0.0"], "correct": 0, "note": "The standard deviation is the spread in dollars, around the mean — so it inherits the mean's weakness. Report it beside the mean, never on its own.", "show": "rentals"}, {"n": 46, "topic": "Describing a column", "kind": "concept", "stem": "A column has mean $592 and median $400. What does that tell you?", "code": "", "options": ["the data is symmetric", "a long right tail is pulling the mean up", "a long left tail", "half the values are missing"], "correct": 1, "note": "Mean above median means the right tail is longer. Quote the median, and say why — most rentals cost far less than the average.", "show": "none"}, {"n": 47, "topic": "Describing a column", "kind": "code", "stem": "What does this return?", "code": "tidy = rentals.drop_duplicates().copy()\ntidy[\"amount\"] = pd.to_numeric(tidy[\"Amount\"].str.replace(\"$\", \"\", regex=False), errors=\"coerce\")\ntidy[\"Station\"] = tidy[\"Station\"].str.strip()\ntidy.groupby(\"Station\")[\"amount\"].sum()[\"North\"]", "options": ["96.0", "72.0", "54.0", "30.0"], "correct": 0, "note": "$30.00 + $42.00 + $24.00 — the third one only joins the group once the stray space is stripped. Three things had to happen first — dedupe, convert, strip — and skipping any one of them changes this number without raising anything.", "show": "rentals"}, {"n": 48, "topic": "Describing a column", "kind": "fill", "stem": "Write exactly what this prints.", "code": "amount = pd.to_numeric(rentals[\"Amount\"].str.replace(\"$\", \"\", regex=False), errors=\"coerce\")\nprint(round(amount.max() - amount.min(), 2))", "options": [], "correct": -1, "answer": "32.0", "accept": ["32", "32.0", "32.00"], "note": "The range, decided entirely by two rows. It grows with the number of rentals and never shrinks.", "show": "rentals"}, {"n": 49, "topic": "Describing a column", "kind": "fill", "stem": "One word. Which statistic is the middle value once the column is sorted?", "code": "arg = \"median\"\narg", "options": [], "correct": -1, "answer": "median", "accept": ["median"], "note": "The median. With an even count there is no single middle, so pandas averages the two either side.", "show": "none"}, {"n": 50, "topic": "Check your work", "kind": "concept", "stem": "What does `assert rentals[\"rental_id\"].is_unique` do if the ids are not unique?", "code": "", "options": ["prints a warning and carries on", "stops the notebook with an AssertionError", "removes the duplicates", "returns False and carries on"], "correct": 1, "note": "It stops. That is the point: a loud failure now beats a plausible wrong number three weeks later.", "show": "none"}, {"n": 51, "topic": "Check your work", "kind": "code", "stem": "What does this return?", "code": "rentals[\"Rental ID\"].is_unique", "options": ["True", "False", "1", "AssertionError"], "correct": 1, "note": "`False` — rental 113 is in there twice. `is_unique` is the check; `assert` is how you make the notebook refuse to go on.", "show": "rentals"}, {"n": 52, "topic": "Check your work", "kind": "code", "stem": "What does this return?", "code": "tidy = rentals.drop_duplicates()\ntidy[\"Bike Type\"].str.strip().str.title().isin([\"Road\", \"Hybrid\", \"E-Bike\"]).all()", "options": ["True", "False", "3", "7"], "correct": 0, "note": "`True`, so every label is one of the three you expect. Write the check as an `assert` and it will catch the day somebody adds a fourth bike without telling you.", "show": "rentals"}, {"n": 53, "topic": "Check your work", "kind": "fill", "stem": "One word. Which keyword stops a notebook when an assumption about the data breaks?", "code": "arg = \"assert\"\narg", "options": [], "correct": -1, "answer": "assert", "accept": ["assert"], "note": "`assert rentals[\"rental_id\"].is_unique`. One line, at the end, for every assumption the rest of your work depends on.", "show": "none"}]}</script>
+<div class="app">
+  <div class="top">
+    <h1>Practice quiz</h1>
+    <button class="ghost" id="theme">Light / dark</button>
+  </div>
+  <p class="lede">Fifty-three questions on the Sep 24 class notebook — looking before you touch,
+    duplicate rows, column names, tidy text, numbers stored as text, missing values, the second
+    sheet, describing a column, and checking your work. Nothing here goes beyond what we ran in
+    class. The table each question is about is shown with it, so you do not need the file open.</p>
+
+  <div class="chips" id="chips"></div>
+  <div class="bar">
+    <div class="track"><i id="fill"></i></div>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div id="stage"></div>
+</div>
+
+<script>
+const DATA = JSON.parse(document.getElementById("qdata").textContent);
+const ALL = DATA.questions;
+const TOPICS = [...new Set(ALL.map(q => q.topic))];
+const $ = id => document.getElementById(id);
+const el = (t, c, x) => { const e = document.createElement(t); if(c) e.className = c;
+  if(x !== undefined) e.textContent = x; return e; };
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const md = s => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>")
+                      .replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>");
+
+let TOPIC = "All", POS = 0, PICKED = {}, TYPED = {};
+
+/* a typed answer is normalised before it is compared: case, quotes and spaces
+   should not decide whether a student got it right */
+const norm = s => String(s).trim().toLowerCase()
+  .replace(/^["']|["']$/g, "").replace(/\s+/g, "");
+
+const isRight = q => q.kind === "fill" ? PICKED[q.n] === true : PICKED[q.n] === q.correct;
+
+const pool = () => ALL.filter(q => TOPIC === "All" || q.topic === TOPIC);
+
+function renderChips(){
+  const host = $("chips"); host.innerHTML = "";
+  ["All"].concat(TOPICS).forEach(t => {
+    const n = t === "All" ? ALL.length : ALL.filter(q => q.topic === t).length;
+    const b = el("button", "chip" + (TOPIC === t ? " on" : ""), t + " " + n);
+    b.onclick = () => { TOPIC = t; POS = 0; renderChips(); render(); };
+    host.appendChild(b);
+  });
+}
+
+function render(){
+  const list = pool();
+  const answered = list.filter(q => PICKED[q.n] !== undefined).length;
+  const right = list.filter(isRight).length;
+  $("fill").style.width = (100 * answered / list.length) + "%";
+  $("count").textContent = right + " right of " + answered + " · " + list.length + " in this set";
+
+  const stage = $("stage");
+  stage.innerHTML = "";
+
+  if(POS >= list.length){ stage.appendChild(summary(list)); return; }
+
+  const q = list[POS];
+  const card = el("div", "card");
+  const head = el("div");
+  head.appendChild(el("span", "tag", q.topic));
+  head.appendChild(el("span", "kindtag", q.kind === "fill" ? "type your answer" : "choose one"));
+  card.appendChild(head);
+  card.appendChild(el("div", "stem", q.stem));
+  (q.show === "both" ? ["rentals", "stations"]
+    : q.show && q.show !== "none" ? [q.show] : []).forEach(nm => {
+      const t = DATA.tables[nm];
+      if(!t) return;
+      const wrap = el("div", "tablewrap");
+      wrap.appendChild(el("div", "tabcap", nm === "stations"
+        ? 'stations \u2014 the lookup sheet' : 'rentals \u2014 straight out of the export'));
+      const tb = el("table", "grid");
+      const hr = el("tr");
+      t.cols.forEach(c => hr.appendChild(el("th", null, c)));
+      tb.appendChild(el("thead")).appendChild(hr);
+      const body = el("tbody");
+      t.rows.forEach(r => {
+        const tr = el("tr");
+        r.forEach((v, i) => {
+          const td = el("td", v === "" ? "blank" : null, v === "" ? "\u2014" : v);
+          if(/^[\d.$]+$|^pending$/.test(v) || v === "") td.classList.add("num");
+          if(v.indexOf("\u2423") >= 0) td.classList.add("ws");
+          tr.appendChild(td);
+        });
+        body.appendChild(tr);
+      });
+      tb.appendChild(body);
+      const sc = el("div", "tablescroll"); sc.appendChild(tb);
+      wrap.appendChild(sc);
+      if(nm === "rentals"){
+        const k = el("div", "tabkey");
+        k.innerHTML = '<b>\u2014</b> a blank cell \u00b7 <i>\u2423</i> a stray space you cannot '
+                    + 'see in Excel';
+        wrap.appendChild(k);
+      }
+      card.appendChild(wrap);
+  });
+  if(q.code && !/^arg = /.test(q.code)) card.appendChild(el("pre", "code", q.code));
+
+  const picked = PICKED[q.n];
+
+  if(q.kind === "fill"){
+    const row = el("div", "fillrow");
+    const inp = document.createElement("input");
+    inp.type = "text"; inp.spellcheck = false; inp.autocomplete = "off";
+    inp.placeholder = "your answer";
+    inp.value = TYPED[q.n] || "";
+    if(picked !== undefined){ inp.disabled = true; inp.className = picked ? "right" : "wrong"; }
+    inp.oninput = e => { TYPED[q.n] = e.target.value; };
+    const go = el("button", "btn go", "Check");
+    go.disabled = picked !== undefined;
+    const submit = () => {
+      if(PICKED[q.n] !== undefined) return;
+      PICKED[q.n] = q.accept.indexOf(norm(TYPED[q.n] || "")) >= 0;
+      render();
+    };
+    go.onclick = submit;
+    inp.onkeydown = e => { if(e.key === "Enter") submit(); };
+    row.appendChild(inp); row.appendChild(go);
+    card.appendChild(row);
+    if(picked !== undefined){
+      const w = el("div", "why");
+      w.innerHTML = (picked ? "<b>Right. </b>"
+        : "<b>Not quite — the answer is <code>" + esc(q.answer) + "</code>. </b>") + md(q.note);
+      card.appendChild(w);
+    }
+    card.appendChild(navRow(q, list));
+    stage.appendChild(card);
+    setTimeout(() => { if(!inp.disabled) inp.focus(); }, 0);
+    return;
+  }
+
+  const opts = el("div", "opts");
+  q.options.forEach((o, i) => {
+    const plain = !/^[\[('"\d]|^True$|^False$|^Python|^-?\d/.test(o) && o.length > 22;
+    const b = el("button", "opt" + (plain ? " plain" : "") +
+      (picked === undefined ? "" : (i === q.correct ? " right" : (i === picked ? " wrong" : ""))));
+    b.disabled = picked !== undefined;
+    b.appendChild(el("span", "ltr", "ABCD"[i]));
+    b.appendChild(el("span", "t", o));
+    b.onclick = () => { PICKED[q.n] = i; render(); };
+    opts.appendChild(b);
+  });
+  card.appendChild(opts);
+
+  if(picked !== undefined){
+    const w = el("div", "why");
+    w.innerHTML = (picked === q.correct ? "<b>Right. </b>" : "<b>Not quite. </b>") + md(q.note);
+    card.appendChild(w);
+  }
+
+  card.appendChild(navRow(q, list));
+  stage.appendChild(card);
+}
+
+function navRow(q, list){
+  const nav = el("div", "nav");
+  const prev = el("button", "btn", "← Previous");
+  prev.disabled = POS === 0;
+  prev.onclick = () => { POS--; render(); };
+  const mid = el("span", "count", (POS + 1) + " of " + list.length);
+  const next = el("button", "btn" + (PICKED[q.n] !== undefined ? " go" : ""),
+                  POS === list.length - 1 ? "Finish →" : "Next →");
+  next.onclick = () => { POS++; render(); };
+  nav.appendChild(prev); nav.appendChild(mid); nav.appendChild(next);
+  return nav;
+}
+
+function summary(list){
+  const card = el("div", "card");
+  const done = el("div", "done");
+  const right = list.filter(isRight).length;
+  const answered = list.filter(q => PICKED[q.n] !== undefined).length;
+  done.appendChild(el("div", "score", right + " / " + list.length));
+  done.appendChild(el("div", "sub", answered < list.length
+    ? (list.length - answered) + " left unanswered" : "every question answered"));
+
+  const by = el("div", "bytopic");
+  TOPICS.forEach(t => {
+    const set = list.filter(q => q.topic === t);
+    if(!set.length) return;
+    const r = set.filter(isRight).length;
+    const row = el("div");
+    row.appendChild(el("span", "", t));
+    row.appendChild(el("b", "", r + " / " + set.length));
+    by.appendChild(row);
+  });
+  done.appendChild(by);
+
+  const nav = el("div", "nav");
+  nav.style.justifyContent = "center";
+  const again = el("button", "btn go", "Start again");
+  again.onclick = () => { PICKED = {}; TYPED = {}; POS = 0; render(); };
+  const back = el("button", "btn", "← Review my answers");
+  back.onclick = () => { POS = 0; render(); };
+  nav.appendChild(back); nav.appendChild(again);
+  done.appendChild(nav);
+  card.appendChild(done);
+  return card;
+}
+
+$("theme").onclick = () => {
+  const cur = document.documentElement.getAttribute("data-theme") ||
+    (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+};
+document.addEventListener("keydown", e => {
+  if(e.key === "ArrowRight") { POS++; render(); }
+  if(e.key === "ArrowLeft" && POS > 0) { POS--; render(); }
+});
+
+renderChips(); render();
+window.__quiz = {ALL, norm,
+  pick: (n, i) => { PICKED[n] = i; render(); },
+  type: (n, s) => { const q = ALL.find(x => x.n === n);
+                    TYPED[n] = s; PICKED[n] = q.accept.indexOf(norm(s)) >= 0; render(); },
+  answerAll: () => { ALL.forEach(q => { if(q.kind === "fill"){ TYPED[q.n] = q.answer;
+                       PICKED[q.n] = q.accept.indexOf(norm(q.answer)) >= 0; }
+                     else PICKED[q.n] = q.correct; }); render(); },
+  score: () => ALL.filter(isRight).length};
+</script>
+</body>
+</html>
+
+</body></html>
